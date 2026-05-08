@@ -1,11 +1,16 @@
 <?php 
-	include"01_nav.php";
- ?>
+include "01_nav.php";
+include "config/koneksi.php";
 
-<?php
-	
-	$query=mysql_query("select * from tb_surat_keterangan_masih_kuliah where id_surat_keterangan_masih_kuliah='$_GET[id_surat_keterangan_masih_kuliah]'");
-	$a=mysql_fetch_array($query);	
+$id = $_GET['id_surat_keterangan_masih_kuliah'];
+
+$query = mysqli_query(
+    $kon,
+    "SELECT * FROM tb_surat_keterangan_masih_kuliah 
+     WHERE id_surat_keterangan_masih_kuliah='$id'"
+);
+
+$a = mysqli_fetch_array($query);
 ?>
 	
 <aside class="right-side">
@@ -85,8 +90,8 @@
                         <td><select name='tahun_akademik' class='form-control' >";
                             <option value="<?php echo $a['tahun_akademik']; ?>"><?php echo $a['tahun_akademik']; ?></option>
                             <?php include "../config/koneksi.php";
-                            $query = mysql_query("SELECT * FROM tb_tahun_akademik ");
-                            while ($row = mysql_fetch_array($query)) {
+                            $query = mysqli_query($kon,"SELECT * FROM tb_tahun_akademik ");
+                            while ($row = mysqli_fetch_array($query)) {
                              echo"
                             <option value='$row[tahun_akademik]'>$row[tahun_akademik]</option>
                             ";
@@ -116,8 +121,8 @@
 						<td><select name='prodi' class='form-control' >";
                             <option value="<?php echo $a['prodi']; ?>"><?php echo $a['prodi']; ?></option>
                             <?php include "../config/koneksi.php";
-                            $query = mysql_query("SELECT * FROM tb_prodi ");
-                            while ($row = mysql_fetch_array($query)) {
+                            $query = mysqli_query($kon,"SELECT * FROM tb_prodi ");
+                            while ($row = mysqli_fetch_array($query)) {
                              echo"
                             <option value='$row[program_studi]'>$row[program_studi]</option>
                             ";

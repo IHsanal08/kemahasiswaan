@@ -1,5 +1,6 @@
 <?php 
-	include"01_nav.php";    
+	include"01_nav.php"; 
+	include"config/koneksi.php";   
 ?>
 
 <?php
